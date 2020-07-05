@@ -1,14 +1,13 @@
 import React from 'react';
-import usePolling from '../usePolling';
+import useServerApi from '../useServerApi';
 const { REACT_APP_USERLIST_URL } = process.env;
 
 function Details(props) {
 
   const {info} = props;
 
-  const [{data, isLoading, hasError}] = usePolling(
+  const [{data, isLoading, hasError}] = useServerApi(
   `${REACT_APP_USERLIST_URL}/${info.id}.json`,
-  10000,
   info
   );
 

@@ -1,6 +1,6 @@
 import {useState, useEffect, useRef} from 'react';
 
-export default function usePolling(url, interval, initialData) {
+export default function useServerApi(url, initialData) {
 const [data, setData] = useState(initialData);
 const [isLoading, setLoading] = useState(false);
 const [hasError, setError] = useState(null);
@@ -27,9 +27,7 @@ useEffect(() => {
         }
     };
     fetchData();
-    const intervalId = setInterval(fetchData, interval);
-    return () => clearInterval(intervalId);
-}, [url, interval])
+}, [url])
 
 return [{data, isLoading, hasError}];
 }

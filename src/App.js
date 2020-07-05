@@ -3,16 +3,15 @@ import List from './components/List';
 import Details from './components/Details';
 import './App.css';
 import { useState, useEffect, useRef } from 'react';
-import usePolling from './usePolling';
+import useServerApi from './useServerApi';
 
 function App() {
   const [selectedUser, setSelectedUser] = useState([]);
 
   const { REACT_APP_USERLIST_URL } = process.env;
 
-  const [{data, isLoading}] = usePolling(
+  const [{data, isLoading}] = useServerApi(
     `${REACT_APP_USERLIST_URL}/users.json`,
-    10000,
     []
   );
 
